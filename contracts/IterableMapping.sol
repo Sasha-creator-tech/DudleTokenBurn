@@ -31,19 +31,4 @@ library IterableMapping {
             map.key.push(key);
         }
     }
-    
-    function remove (Map storage map, address key) public {
-        if (!map.inserted[key]) {
-            return;
-        }
-        delete map.inserted[key];
-        delete map.value[key];
-        uint256 index = map.indexOf[key];
-        uint256 lastIndex = map.key.length - 1;
-        address lastKey = map.key[lastIndex];
-        map.indexOf[lastKey] = index;
-        delete map.indexOf[key];
-        map.key[index] = lastKey;
-        map.key.pop();
-    }
 }
